@@ -1,6 +1,6 @@
 {
   "name": "html-looks-like",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Assert that an HTML string looks approximately the same as another HTML",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
