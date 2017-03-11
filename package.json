@@ -5,6 +5,10 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "author": "Andre Staltz",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/staltz/html-looks-like.git"
+  },
   "license": "MIT",
   "dependencies": {
     "@types/jsdom": "^2.0.30",
