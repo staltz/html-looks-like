@@ -7,7 +7,7 @@
 **Example:**
 
 ```js
-import htmlLooksLike = require('html-looks-like');
+const htmlLooksLike = require('html-looks-like');
 
 const actual = `
   <div class="fe10c23a">
