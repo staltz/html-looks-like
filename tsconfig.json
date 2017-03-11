@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "declaration": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "outDir": "./lib/",
+    "lib": [
+      "es2015",
+      "dom"
+    ]
+  },
+  "formatCodeOptions": {
+    "indentSize": 2,
+    "tabSize": 2
+  },
+   "files": [
+     "./stub-typings/diff-dom.d.ts",
+     "./stub-typings/domwalk.d.ts",
+     "./stub-typings/lodash.sortby.d.ts",
+     "src/index.ts"
+   ]
+}
