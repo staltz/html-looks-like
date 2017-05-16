@@ -11,12 +11,14 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@types/jsdom": "^2.0.30",
-    "@types/mocha": "^2.2.39",
     "diff-dom": "^2.1.0",
     "domwalk": "^1.1.0",
     "jsdom": "^9.11.0",
-    "lodash.sortby": "^4.7.0",
+    "lodash.sortby": "^4.7.0"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^2.0.30",
+    "@types/mocha": "^2.2.39",
     "mocha": "^3.2.0",
     "ts-node": "^2.1.0",
     "tslint": "^4.5.1",
