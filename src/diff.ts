@@ -1,6 +1,6 @@
 import DiffDOM = require('diff-dom');
 import stableSort = require('lodash.sortby');
-import {NodeObj, Doc} from './types';
+import { NodeObj } from './types';
 
 const dd = new DiffDOM();
 
@@ -174,7 +174,7 @@ function isAddSomethingDiff(diff: Diff): boolean {
   return isAddElementDiff(diff) || isAddTextElementDiff(diff);
 }
 
-export function makeDiff(actualDoc: Doc, expectedDoc: Doc): Array<Diff> {
+export function makeDiff(actualDoc: Node, expectedDoc: Node): Array<Diff> {
   const diffs1 = dd.diff(expectedDoc, actualDoc) as Array<Diff>;
   const diffs2 = stableSort(diffs1, (d: Diff) => d.route.join('')) as Array<Diff>;
   const diffs = diffs2

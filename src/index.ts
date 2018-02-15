@@ -1,8 +1,8 @@
 import domWalk = require('domwalk');
 import { JSDOM } from 'jsdom';
-import {Doc, HtmlLooksLike} from './types';
-import {makeDiff, Diff} from './diff';
-import {reportMismatches} from './report';
+import { HtmlLooksLike } from './types';
+import { makeDiff, Diff } from './diff';
+import { reportMismatches } from './report';
 
 function trimTextNode(node: Node) {
   if (node.nodeType === 3) {
@@ -15,14 +15,17 @@ function trimTextNode(node: Node) {
   }
 }
 
-function makeDocsAndDiff(actual: string, expected: string): [Array<Diff>, Doc, Doc] {
-  const actualDoc = new JSDOM(actual);
+function makeDocsAndDiff(actual: string, expected: string): [Array<Diff>, Document, Document] {
+  const actualDoc = new JSDOM(actual).window.document;
   domWalk(actualDoc, trimTextNode);
+
   const expectedWithWildcards = expected
     .replace(/{{[^}]*}}/g, '<!--$ignored-wildcard-element$-->');
-  const expectedDoc = new JSDOM(expectedWithWildcards);
+  const expectedDoc = new JSDOM(expectedWithWildcards).window.document;
+
   domWalk(expectedDoc, trimTextNode);
   const diffs = makeDiff(actualDoc, expectedDoc);
+
   return [diffs, actualDoc, expectedDoc];
 }
 

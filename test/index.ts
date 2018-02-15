@@ -106,11 +106,36 @@ describe('html-looks-like', function () {
 
     try {
       htmlLooksLike(actual, expected);
+      assert.fail('htmlLooksLike did not throw error');
     } catch (err) {
       assert.strictEqual(err.message,
         'HTML is missing the attribute `class="highlighted"` on the element\n' +
         '```html\n' +
         '<p>This is some text content</p>\n' +
+        '```'
+      );
+    }
+  });
+
+  it('should detect element missing', function () {
+    const actual = `
+      <div>
+      </div>
+    `;
+    const expected = `
+      <div>
+        <div>Hello</div>
+      </div>
+    `;
+
+    try {
+      htmlLooksLike(actual, expected);
+      assert.fail('htmlLooksLike did not throw error');
+    } catch (err) {
+      assert.strictEqual(err.message,
+        'HTML is missing the expected element\n' +
+        '```html\n' +
+        '<div>Hello</div>\n' +
         '```'
       );
     }
