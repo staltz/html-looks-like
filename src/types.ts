@@ -1,11 +1,11 @@
-import jsdom = require('jsdom');
+import { JSDOM } from 'jsdom';
 
 export interface HtmlLooksLike {
   (actual: string, expected: string): void;
   bool(actual: string, expected: string): boolean;
 }
 
-export type Doc = jsdom.DocumentWithParentWindow;
+export type Doc = JSDOM;
 
 export interface NodeObj {
   nodeName: string;

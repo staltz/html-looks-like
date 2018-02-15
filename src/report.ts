@@ -1,7 +1,7 @@
 import {NodeObj, Doc} from './types';
 import {Diff} from './diff';
 
-function routeToNode(doc: Doc, route: Array<number>) {
+function routeToNode(doc: Node, route: Array<number>) {
   let ref: Node = doc;
   route.forEach(i => {
     ref = ref.childNodes[i];
@@ -56,7 +56,7 @@ function renderMismatch(diff: Diff, actualDoc: Doc, expectedDoc: Doc): string {
     const snippet = mdHTML(serializeNodeObj(diff.element));
     return `HTML is missing the expected element\n${snippet}`;
   } else if (diff.action === 'removeAttribute') {
-    const node = routeToNode(actualDoc, diff.route) || '???';
+    const node = routeToNode(actualDoc.window.document, diff.route) || '???';
     const attr = `${diff.name}="${diff.value}"`;
     const snippet = mdHTML((node as HTMLElement).outerHTML || node.toString());
     return `HTML is missing the attribute \`${attr}\` on the element\n${snippet}`;
@@ -65,7 +65,7 @@ function renderMismatch(diff: Diff, actualDoc: Doc, expectedDoc: Doc): string {
     const aSnippept = mdHTML(serializeNodeObj(diff.newValue));
     return `HTML expected element\n${eSnippet}\nbut got element\n${aSnippept}`;
   } else if (diff.action === 'modifyAttribute') {
-    const node = routeToNode(expectedDoc, diff.route) || '???';
+    const node = routeToNode(expectedDoc.window.document, diff.route) || '???';
     const htmlSnippet = mdHTML((node as HTMLElement).outerHTML || node.toString());
     const eSnippet = diff.oldValue;
     const aSnippet = diff.newValue;
