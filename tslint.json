@@ -18,7 +18,6 @@
     "no-empty-interface": true,
     "no-string-throw": true,
     "unified-signatures": true,
-    "typeof-compare": true,
     "space-before-function-paren": [
       true,
       {
