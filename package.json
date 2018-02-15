@@ -29,6 +29,6 @@
     "lint": "tslint -c tslint.json src/**/*.ts src/*.ts",
     "mocha": "mocha test/*.ts test/**/*.ts --require ts-node/register",
     "test": "npm run lint && npm run mocha",
-    "postinstall": "npm run compile"
+    "prepublish": "npm run compile"
   }
 }
